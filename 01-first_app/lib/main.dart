@@ -1,16 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+
+//custome files
+import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  var _questionNo = 0;
+
   //on clicked buttons
-  void printButton() {
-    print('Button clicked');
+  void _printButton() {
+    setState(() {
+      _questionNo = (_questionNo + 1) % 3;
+      print(_questionNo);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your name?',
+      'How old are you?',
+      'What is your hobby'
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -18,11 +39,11 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text('The Question!'),
-            ElevatedButton(onPressed: printButton, child: Text('Option1')),
-            ElevatedButton(onPressed: printButton, child: Text('Option2')),
-            ElevatedButton(onPressed: printButton, child: Text('Option3')),
-            ElevatedButton(onPressed: printButton, child: Text('Option4')),
+            Question(questions.elementAt(_questionNo)),
+            Answer(_printButton),
+            Answer(_printButton),
+            Answer(_printButton),
+            Answer(_printButton),
           ],
         ),
       ),
