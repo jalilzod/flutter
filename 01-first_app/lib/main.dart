@@ -1,8 +1,11 @@
+import 'package:first_app/result.dart';
 import 'package:flutter/material.dart';
 
 //custome files
 import './question.dart';
 import './answer.dart';
+import './quiz.dart';
+import './result.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,46 +18,47 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _questions = const [
+    {
+      'questionText': 'What\'s your favorite IDE?',
+      'answers': ['vs code', 'IntelliJ', 'visual studio code'],
+    },
+    {
+      'questionText': 'What\'s your favorite language?',
+      'answers': ['Java', 'Dart&Flutter', 'Python', 'JS', 'HTML&CSS'],
+    },
+    {
+      'questionText': 'What\'s your favorite framework?',
+      'answers': ['Spring Boot', 'Flutter', 'React Native'],
+    },
+  ];
+
   var _questionNo = 0;
 
   //on clicked buttons
   void _printButton() {
     setState(() {
-      _questionNo = (_questionNo + 1) % 3;
-      print(_questionNo);
+      if (_questionNo < _questions.length) {
+        _questionNo++;
+      } else {
+        print('Not more questions');
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'What\'s your favorite IDE?',
-        'answers': ['vs code', 'IntelliJ', 'Microsoft visual studio code'],
-      },
-      {
-        'questionText': 'What\'s your favorite language?',
-        'answers': ['Java', 'Dart&Flutter', 'Python', 'JS html css'],
-      },
-      {
-        'questionText': 'What\'s your favorite framework?',
-        'answers': ['Spring Boot', 'Flutter', 'React Native'],
-      },
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('My first app'),
         ),
-        body: Column(
-          children: [
-            Question((questions[_questionNo]['questionText'] as String)),
-            ...(questions[_questionNo]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_printButton, answer);
-            }).toList()
-          ],
-        ),
+        body: _questionNo < _questions.length
+            ? Quiz(
+                questions: _questions,
+                printButton: _printButton,
+                questionNo: _questionNo)
+            : Result(),
       ),
     );
   }
