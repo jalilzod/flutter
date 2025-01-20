@@ -6,6 +6,15 @@ class Nextquote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(onPressed: getNextQuote, child: Text('Next Quote'));
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue, foregroundColor: Colors.white),
+        onPressed: getNextQuote,
+        child: Text(
+          'Next Quote',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ));
   }
 }

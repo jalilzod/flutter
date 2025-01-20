@@ -8,7 +8,10 @@ class Displaytext extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       theQuote,
-      style: TextStyle(fontSize: 25, color: Colors.blueAccent),
+      style: TextStyle(
+          fontSize: 20,
+          color: const Color.fromARGB(255, 78, 78, 78),
+          fontStyle: FontStyle.italic),
     );
   }
 }

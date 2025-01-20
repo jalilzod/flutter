@@ -23,9 +23,9 @@ class _MyAppState extends State<MyApp> {
   var _quoteIndex = 0;
   void _getNextQuote() {
     setState(() {
-      if (_quoteIndex < _quotes.length)
+      if (_quoteIndex < _quotes.length - 1) {
         _quoteIndex++;
-      else {
+      } else {
         _quoteIndex = 0;
       }
     });
