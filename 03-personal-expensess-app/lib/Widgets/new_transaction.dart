@@ -11,6 +11,9 @@ class NewTransaction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
+        decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 231, 227, 227),
+            borderRadius: BorderRadius.circular(15)),
         padding: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
