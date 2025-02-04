@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addNewTrans;
@@ -10,8 +11,8 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
-
   final amountController = TextEditingController();
+  DateTime? _userSelectedDate;
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -22,6 +23,20 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addNewTrans(enteredTitle, enteredAmount);
 
     Navigator.of(context).pop();
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2025),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) return;
+      setState(() {
+        _userSelectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -46,15 +61,35 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
             ),
-            TextButton(
-              onPressed: () {
-                submitData;
-              },
-              child: Text(
-                'Add Transaction',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Text(_userSelectedDate == null
+                      ? 'No Date Chosen'
+                      : DateFormat.yMd().format(_userSelectedDate!)),
+                  TextButton(
+                      onPressed: () {
+                        _presentDatePicker();
+                      },
+                      child: Text(
+                        'Choose Date!',
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      )),
+                ],
               ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  textStyle: TextStyle(fontSize: 14),
+                  elevation: 5),
+              onPressed: () {
+                submitData();
+              },
+              child: Text('Add Transaction'),
             ),
           ],
         ),
