@@ -9,8 +9,9 @@ class TransactionList extends StatelessWidget {
   }
 
   final List<Transactions> transactions;
+  final Function(String id) deletedTX;
 
-  TransactionList(this.transactions);
+  const TransactionList(this.transactions, this.deletedTX);
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,14 @@ class TransactionList extends StatelessWidget {
                     ),
                     subtitle: Text(
                         DateFormat.yMMMEd().format(transactions[index].date)),
+                    trailing: IconButton(
+                        onPressed: () {
+                          deletedTX(transactions[index].id);
+                        },
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        )),
                   ),
                 );
               },
