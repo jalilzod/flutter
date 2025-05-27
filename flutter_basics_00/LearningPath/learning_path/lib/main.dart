@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_path/greeting.dart';
-import 'package:learning_path/mood_app.dart';
+import 'package:learning_path/mood_selector.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Basic now..",
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const MoodeApp(),
+      home: const MoodSelector(),
     );
   }
 }
