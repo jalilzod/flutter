@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learning_path/greeting.dart';
+import 'package:learning_path/mood_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,11 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       title: "Basic now..",
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const HomeScreen(),
+      home: const MoodeApp(),
     );
   }
 }
