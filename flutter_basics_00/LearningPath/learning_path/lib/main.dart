@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_path/click_to_change_color_app.dart';
-import 'package:learning_path/mood_selector.dart';
+import 'package:learning_path/list_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Basic now..",
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const ClickToChangeColorApp(),
+      home: const ContactListApp(),
     );
   }
 }
