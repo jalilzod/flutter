@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_path/list_view.dart';
+import 'package:learning_path/input_tasks.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Basic now..",
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const ContactListApp(),
+      home: const InputTasks(),
     );
   }
 }
