@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_path/input_tasks.dart';
+import 'package:learning_path/grocery_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Basic now..",
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: const InputTasks(),
+      home: const GroceryListApp(),
     );
   }
 }
