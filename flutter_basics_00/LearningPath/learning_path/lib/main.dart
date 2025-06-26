@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_path/counter_app.dart';
-import 'package:learning_path/row_column_container.dart';
+import 'package:learning_path/previous/row_column_container.dart';
 
 void main() {
   runApp(const MyApp());
