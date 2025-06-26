@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learning_path/first.dart';
+import 'package:learning_path/nav.dart';
 import 'package:learning_path/previous/row_column_container.dart';
 
 void main() {
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Navigation basic',
       debugShowCheckedModeBanner: false,
-      home: RowColContainer(),
+      home: FisrtPage(),
     );
   }
 }
