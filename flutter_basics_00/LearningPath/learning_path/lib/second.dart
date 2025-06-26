@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatefulWidget {
-  final String message;
-  const SecondPage({super.key, required this.message});
-
+  const SecondPage({super.key});
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
@@ -11,6 +9,7 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
+    final message = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         title: Text('Second page'),
@@ -22,7 +21,7 @@ class _SecondPageState extends State<SecondPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Hi, ${widget.message}'),
+            Text('Hi, $message'),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);

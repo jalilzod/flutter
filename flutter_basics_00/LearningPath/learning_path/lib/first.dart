@@ -57,11 +57,10 @@ class _FisrtPageState extends State<FisrtPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => SecondPage(message: controller.text),
-                  ),
+                  '/second',
+                  arguments: controller.text.trim(),
                 );
               },
               child: Text('Go second'),
